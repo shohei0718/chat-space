@@ -29,11 +29,12 @@ Things you may want to cover:
 |------|----|-------|
 |name|string|null: false,|
 |email|string|null: false, unique: true|
+|add_index|:users, :name|
 
 ### Association
 - has_many :groups,through: :group_users
 - has_many :group_users
-
+- has_many :messages
 
 ## groupsテーブル
 
@@ -44,7 +45,7 @@ Things you may want to cover:
 ### Association
 - has_many :users,through: :group_users
 - has_many :group_users
-
+- has_many :messages
 
 ## group_userテーブル
 
@@ -52,6 +53,21 @@ Things you may want to cover:
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :group
+
+
+## menssagesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|body|text|null: false,|
+|image|string|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+|add_index|:messages, :body|
 
 ### Association
 - belongs_to :user
