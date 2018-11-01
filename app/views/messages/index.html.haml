@@ -1,0 +1,52 @@
+%body
+  .messages
+    %header.messages__header
+    .edit-link
+      = link_to "Edit"
+    %h2 Sample
+    %p.name Members: Name
+    .messages__main
+      %ul
+        %li
+          %h3 shohei
+          %p.time 2018/11/1 17:32
+          %p.content This sentence is test1.
+      %ul
+        %li
+          %h3 shohei
+          %p.time 2018/11/1 17:32
+          %p.content This sentence is test2.
+      %ul
+        %li
+          %h3 shohei
+          %p.time 2018/11/1 17:32
+          %p.content This sentence is test3.
+    %footer.messages__footer
+      .messages__footer__inputbox
+        %p.input-form ここに入力フォームを入れる
+        %p.picture-botton
+          = fa_icon "image"
+      .messages__footer__sendbox
+        %p.send-form Send
+
+
+
+
+
+  .menu
+    %header.menu__account
+      %h2 user_account
+      %p
+        = fa_icon "edit"
+        = fa_icon "cog"
+    .menu__groups
+      %ul
+        %li
+          %h2 group1
+          %p latest message
+        %li
+          %h2 group2
+          %p latest message
+        %li
+          %h2 group3
+          %p latest message

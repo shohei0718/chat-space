@@ -1,0 +1,55 @@
+.menu {
+  background-color:#2f3151;
+  width: 300px;
+  height: 100vh;
+  position: relative;
+
+  &__account {
+    background-color:#253141;
+    height: 96px;
+  }
+
+
+  &__account h2 {
+    font-size: 16px;
+    font-weight: bold;
+    color:#FFFFFF;
+    line-height: 96px;
+    padding-left: 20px;
+    float: left;
+  }
+
+  &__account p {
+    color:#FFFFFF;
+    float: right;
+    line-height: 96px;
+    padding-right: 20px;
+  }
+
+  &__groups {
+    height: auto;
+    padding-top: 96px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  &__groups ul li {
+    margin: 20px auto 40px;
+  }
+
+  &__groups h2 {
+    color:#FFFFFF;
+    font-size: 15px;
+    padding-left: 20px;
+  }
+
+  &__groups p {
+    color:#FFFFFF;
+    font-size: 11px;
+    padding-left: 20px;
+    margin-top:5px;
+  }
+
+}
