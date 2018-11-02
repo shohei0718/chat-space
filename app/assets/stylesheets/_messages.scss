@@ -43,35 +43,33 @@ p.name {
     position: relative;
     padding-left: 40px;
     border: 1px solid #EEEEEE;
+
+    ul {
+      padding-bottom: 40px;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: bold;
+      color: #434A54;
+      float: left;
+      padding-right: 10px;
+    }
+
+    p.time {
+      font-size: 12px;
+      color: #999999;
+      float: left;
+      padding-top: 4px;
+    }
+
+    p.content {
+      font-size: 14px;
+      color: #434A54;
+      clear: both;
+      padding-top :10px;
+    }
   }
-
-ul {
-  padding-bottom: 40px;
-}
-
-h3 {
-  font-size: 16px;
-  font-weight: bold;
-  color: #434A54;
-  float: left;
-  padding-right: 10px;
-
-}
-
-p.time {
-  font-size: 12px;
-  color: #999999;
-  float: left;
-  padding-top: 4px;
-}
-
-p.content {
-  font-size: 14px;
-  color: #434A54;
-  clear: both;
-  padding-top :10px;
-
-}
 
 
   &__footer {
@@ -88,20 +86,19 @@ p.content {
     width: 80%;
     margin: 20px 0 0 40px;
     float: left;
-  }
 
-  p.input-form {
-    color: #434A54;
-    font-size: 16px;
-    padding-left: 10px;
-    padding-top: 12px;
-    float: left;
+    p.input-form {
+      color: #434A54;
+      font-size: 16px;
+      padding-left: 10px;
+      padding-top: 12px;
+      float: left;
+    }
 
-  }
-
-  p.picture-botton {
-    float: right;
-    margin: 10px 10px 0 0;
+    p.picture-botton {
+      float: right;
+      margin: 10px 10px 0 0;
+    }
   }
 
   &__footer__sendbox {
@@ -110,15 +107,13 @@ p.content {
     height: 50px;
     margin: 20px 40px 0 15px;
     float: left;
+
+    p.send-form {
+      font-size: 16px;
+      text-align: center;
+      padding-top: 12px;
+      color: #FFFFFF;
+    }
   }
-
-  p.send-form {
-    font-size: 16px;
-    text-align: center;
-    padding-top: 12px;
-    color: #FFFFFF;
-  }
-
-
 }
 
