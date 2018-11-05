@@ -2,7 +2,6 @@
   background-color:#2f3151;
   width: 300px;
   height: 100vh;
-  position: relative;
 
   &__account {
     background-color:#253141;
@@ -17,37 +16,43 @@
       float: left;
     }
 
-    p {
-      color:#FFFFFF;
-      float: right;
+    ul {
       line-height: 96px;
-      padding-right: 20px;
+
+      li.list.group_info {
+        float: right;
+        padding-right: 5px;
+      }
+
+      li.list.user_info {
+        float: right;
+        padding-right: 20px;
+      }
+
+      i {
+        color:#FFF;
+      }
     }
   }
 
-  &__groups {
-    height: auto;
-    padding-top: 96px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+  .groups {
 
-    ul li {
+
+    .group {
       margin: 20px auto 40px;
-    }
 
-    h2 {
-      color:#FFFFFF;
-      font-size: 15px;
-      padding-left: 20px;
-    }
+      .group__name {
+        color: white;
+        font-size: 15px;
+        padding-left: 20px;
+      }
 
-    p {
-      color:#FFFFFF;
-      font-size: 11px;
-      padding-left: 20px;
-      margin-top:5px;
+      .group__message {
+        color: white;
+        font-size: 11px;
+        padding-left: 20px;
+        margin-top:5px;
+      }
     }
   }
 }
