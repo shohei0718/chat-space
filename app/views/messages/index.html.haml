@@ -5,29 +5,17 @@
       = link_to 'Edit', edit_group_path(@group)
     %h2 Sample
     %p.name Members: Name
-    .messages__main
-      %ul
-        %li
-          %h3 shohei
-          %p.time 2018/11/1 17:32
-          %p.content This sentence is test1.
-      %ul
-        %li
-          %h3 shohei
-          %p.time 2018/11/1 17:32
-          %p.content This sentence is test2.
-      %ul
-        %li
-          %h3 shohei
-          %p.time 2018/11/1 17:32
-          %p.content This sentence is test3.
-    %footer.messages__footer
-      .messages__footer__inputbox
-        %p.input-form ここに入力フォームを入れる
-        %p.picture-botton
-          = fa_icon "image"
-      .messages__footer__sendbox
-        %p.send-form Send
+    .messages
+      = render @messages
+
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'input-form', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden',style: "display:none"
+        = f.submit 'Send', class: 'form__submit'
 
 
   .menu
@@ -48,4 +36,4 @@
             .group__name
               = group.name
             .group__message
-              メッセージはまだありません。
+              = group.show_last_message
