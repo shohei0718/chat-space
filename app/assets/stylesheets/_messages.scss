@@ -1,5 +1,4 @@
 .messages {
-  // background-color: #EEEEEE;
   width: calc(100vw - 300px);
   min-height: 100%;
   float: right;
@@ -30,90 +29,100 @@ p.name {
   &__header {
     background-color :#FFFFFF;
     margin-left: 40px;
-    // position: fixed;
-    // width: calc(100vw - 300px);
     height: 96px;
     float: left;
   }
 
-  &__main {
+  .messages {
+    overflow-y: scroll;
     background-color: #F5F5F5;
-    height: 600px;
+    height: 555px;
     padding-top: 46px;
     position: relative;
-    padding-left: 40px;
-    border: 1px solid #EEEEEE;
 
-    ul {
+    .message {
       padding-bottom: 40px;
-    }
+      padding-left: 40px;
 
-    h3 {
-      font-size: 16px;
-      font-weight: bold;
-      color: #434A54;
-      float: left;
-      padding-right: 10px;
-    }
+      .upper-message {
 
-    p.time {
-      font-size: 12px;
-      color: #999999;
-      float: left;
-      padding-top: 4px;
-    }
+        &__user-name {
+          font-size: 16px;
+          font-weight: bold;
+          color: #434A54;
+          float: left;
+          padding-right: 10px;
+        }
+        &__date {
+          font-size: 12px;
+          color: #999999;
+          float: left;
+          padding-top: 4px;
+        }
+      }
 
-    p.content {
-      font-size: 14px;
-      color: #434A54;
-      clear: both;
-      padding-top :10px;
+      .lower-message {
+
+        &__content {
+          font-size: 14px;
+          color: #434A54;
+          clear: both;
+          padding-top :10px;
+        }
+      }
     }
   }
 
 
-  &__footer {
+  .form {
     background-color: #D3D3D3;
     height: 90px;
     width: calc(100vw - 300px);
-    position: absolute;
-    bottom: 0;
+    float: left;
+    box-sizing: border-box;
+    padding: 20px 40px 20px 40px;
   }
 
-  &__footer__inputbox {
-    background-color: white;
-    height: 50px;
-    width: 80%;
-    margin: 20px 0 0 40px;
-    float: left;
-
-    p.input-form {
+  .input-form {
       color: #434A54;
-      font-size: 16px;
+      width: calc(100% - 180px);
       padding-left: 10px;
-      padding-top: 12px;
+      height: 50px;
+      border: none;
       float: left;
     }
 
-    p.picture-botton {
-      float: right;
-      margin: 10px 10px 0 0;
+  .form__mask {
+    background-color: #fff;
+    width: 40px;
+    float: left;
+    height: 50px;
+    padding-right: 10px;
+    text-align: center;
     }
+
+  .form__mask__image{
+    width: 40px;
+    background-color: white;
+    float: right;
+    margin-top: 18px
   }
 
-  &__footer__sendbox {
-    background-color: #38AEF0;
-    width: 11%;
-    height: 50px;
-    margin: 20px 40px 0 15px;
-    float: left;
+    .icon {
+      float: right;
+      // margin: 10px 10px 0 0;
+    }
 
-    p.send-form {
+   .form__submit {
+      background-color: #38AEF0;
+      height: 50px;
+      padding: 0 30px;
+      color: white;
       font-size: 16px;
       text-align: center;
-      padding-top: 12px;
-      color: #FFFFFF;
+      padding-top: 2px;
+      margin-left: 15px;
+      // float: left;
     }
   }
-}
 
