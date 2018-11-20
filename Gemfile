@@ -63,3 +63,7 @@ gem 'haml-rails'
 gem 'erb2haml'
 gem 'mini_magick'
 gem 'carrierwave'
+
+group :production do
+  gem 'unicorn'
+end
