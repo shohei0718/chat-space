@@ -40,17 +40,18 @@
     padding: 0 20px;
 
     .group {
-      padding: 20px 0 40px;
 
       &__name {
         color: white;
         font-size: 15px;
+        padding-top: 20px;
       }
 
       &__message {
         color: white;
         font-size: 11px;
         margin-top:5px;
+        padding-bottom: 40px;
       }
     }
   }

@@ -4,8 +4,8 @@
       = message.user.name
     .upper-message__date
       = format_posted_time(message.created_at)
-  .lower-meesage
-    - if message.content.present?
-      %p.lower-message__content
+  .lower-message
+    %p.lower-message__content
+      - if message.content.present?
         = message.content
-    = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+      = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
