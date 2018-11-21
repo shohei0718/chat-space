@@ -1,11 +1,11 @@
 %body
-  .messages
-    %header.messages__header
+  .body
+    .__header
     .edit-link
       = link_to 'Edit', edit_group_path(@group)
-    %h2 Sample
+    %h2 sample
     %p.name Members: Name
-    .messages
+    .messages#message
       = render @messages
 
     .form
@@ -15,7 +15,7 @@
           = f.label :image, class: 'form__mask__image' do
             = fa_icon 'picture-o', class: 'icon'
             = f.file_field :image, class: 'hidden',style: "display:none"
-        = f.submit 'Send', class: 'form__submit'
+        = f.submit 'Send', class: 'form__submit', id: 'form__submit'
 
 
   .menu
