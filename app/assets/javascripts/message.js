@@ -1,26 +1,7 @@
 $(document).on('turbolinks:load', function() {
   $(function(){
       function buildHTML(message){
-        if (message.image == null) {
-
-          var html = `<div class="message">
-                        <div class="upper-message">
-                          <div class="upper-message__user-name">
-                            ${message.user_name}
-                          </div>
-                        </div>
-
-                        <div class="upper-message__date">
-                          ${message.created_at}
-                        </div>
-                        <div class="lower-message">
-                          <p class="lower-message__content">
-                            ${message.content}
-                          </p>
-                        </div>
-                      </div>`
-        return html;
-        } else {
+          var image = ( message.image ) ? `<img src= "${message.image} " alt= "画像" width="250px" height="250px" >` : ' ' ;
 
           var html = `<div class="message">
                         <div class="upper-message">
@@ -37,10 +18,9 @@ $(document).on('turbolinks:load', function() {
                           <p class="lower-message__content">
                             ${message.content}
                           </p>
-                          <img src= "${message.image}" alt= "画像" width="250px" height="250px" />
+                            ${image}
                         </div>
                       </div>`
-        }
         return html;
       }
 
@@ -68,11 +48,10 @@ $(document).on('turbolinks:load', function() {
         contentType: false,
       })
       .done(function(data){
-        console.log(data.image)
+        console.log("成功")
         var html = buildHTML(data);
-        $('#message').append(html)
-        $('#message_content').val('')
-        $('#message_image').val('')
+        $('#message').append(html);
+        $('#new_message')[0].reset();
         $('.form__submit').prop('disabled', false);
         scroll()
       })
