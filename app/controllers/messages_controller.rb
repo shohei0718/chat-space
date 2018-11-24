@@ -2,10 +2,9 @@ class MessagesController < ApplicationController
   before_action :set_group
 
   def index
-    @group = Group.find(params[:group_id])
     @message =  Message.new
     @messages = @group.messages.includes(:user)
-    # redirects to new_user_session_path(current_user.id) unless user_signed_in?
+
   end
 
   def create
