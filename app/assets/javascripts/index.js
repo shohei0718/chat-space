@@ -23,21 +23,15 @@ $(document).on('turbolinks:load', function() {
 
     $("#user-search-field").on("keyup", function(e){
         e.preventDefault();
-        // 同期通信をストップ
         var input = $("#user-search-field").val();
-        console.log(input)
         $(".chat-group-user").remove();
-        // ここまではOK！ここからコントロールにデータをjsonで流していく
         $.ajax({
           url: '/users',
           type: "GET",
           data: {keyword: input},
           dataType: 'json',
-          // processData: false,
-          contentType: false,
         })
         .done(function(data){
-          console.log(data)
           $.each(data, function(index,input){
             var html =  buildHTML(input);
             $('#user-search-result').append(html);
@@ -49,8 +43,6 @@ $(document).on('turbolinks:load', function() {
     });
 
     $('#user-search-result').on("click", ".user-search-add", function(){
-
-      console.log("word")
       var addName = $(this).data('user-name');
       var addId = $(this).data('user-id');
       var html = destroyHTML(addName, addId);
