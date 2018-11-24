@@ -3,8 +3,12 @@
     .__header
     .edit-link
       = link_to 'Edit', edit_group_path(@group)
-    %h2 sample
-    %p.name Members: Name
+    %h2
+      =@group.name
+    %p.name Members:
+    .member
+      - @group.users.each do |user|
+        = user.name
     .messages#message
       = render @messages
 
