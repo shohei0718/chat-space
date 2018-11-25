@@ -1,9 +1,9 @@
 $(document).on('turbolinks:load', function() {
   $(function(){
       function buildHTML(message){
-          var image = ( message.image ) ? `<img src= "${message.image} " alt= "画像" width="250px" height="250px" >` : ' ' ;
+          var image = ( message.image ) ? `<img src= ${message.image} alt= "画像" class="lower-message__image" >` : ' ' ;
 
-          var html = `<div class="message">
+          var html = `<div class="message" data-id="${message.id}">
                         <div class="upper-message">
                           <div class="upper-message__user-name">
                             ${message.user_name}
@@ -25,25 +25,18 @@ $(document).on('turbolinks:load', function() {
       }
 
       function scroll() {
-        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'slow');
       }
 
     $('#new_message').on('submit', function(e){
       e.preventDefault();
-      // 同期通信をストップしている
       var formData = new FormData(this);
-      // 上の記述はjbuilderのデータ
       var url = $(this).attr('action')
-      // ここからコントロールに流れる
       $.ajax({
         url: url,
-        // ルーティングにパスを送っている（groups/1/messages）→パスに反応してcreateアクションが発動する
         type: "POST",
-        // POSTで送ってる
         data: formData,
-        // jbuilderで取得してきたデータ
         dataType: 'json',
-        // json形式で
         processData: false,
         contentType: false,
       })
@@ -59,6 +52,31 @@ $(document).on('turbolinks:load', function() {
         alert('error');
         $('.form__submit').prop('disabled', false);
       })
-    })
+    });
+
+    var interval = setInterval(function() {
+    if (window.location.href.match(/\/groups\/\d+\/messages/)) {
+      var message_id = $('.message:last').data('id');
+      $.ajax({
+        url: location.href,
+        type:"GET",
+        data: {id:message_id},
+        dataType:'json',
+      })
+      .done(function(data) {
+        console.log(data)
+
+        data.forEach(function(message){
+          var html = buildHTML(message);
+          $('#message').append(html);
+        })
+        scroll()
+      })
+      .fail(function(data) {
+        alert('自動更新に失敗しました')
+      });
+    } else {
+      clearInterval(interval);
+    }} , 5000 );
   });
 });
