@@ -3,7 +3,7 @@ $(document).on('turbolinks:load', function() {
       function buildHTML(message){
           var image = ( message.image ) ? `<img src= "${message.image} " alt= "画像" width="250px" height="250px" >` : ' ' ;
 
-          var html = `<div class="message">
+          var html = `<div class="message" data-message-id="${message.id}">
                         <div class="upper-message">
                           <div class="upper-message__user-name">
                             ${message.user_name}
@@ -25,25 +25,18 @@ $(document).on('turbolinks:load', function() {
       }
 
       function scroll() {
-        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'slow');
       }
 
     $('#new_message').on('submit', function(e){
       e.preventDefault();
-      // 同期通信をストップしている
       var formData = new FormData(this);
-      // 上の記述はjbuilderのデータ
       var url = $(this).attr('action')
-      // ここからコントロールに流れる
       $.ajax({
         url: url,
-        // ルーティングにパスを送っている（groups/1/messages）→パスに反応してcreateアクションが発動する
         type: "POST",
-        // POSTで送ってる
         data: formData,
-        // jbuilderで取得してきたデータ
         dataType: 'json',
-        // json形式で
         processData: false,
         contentType: false,
       })
@@ -60,5 +53,25 @@ $(document).on('turbolinks:load', function() {
         $('.form__submit').prop('disabled', false);
       })
     })
+
+    setInterval(function() {
+      $.ajax({
+        url: location.href.json,
+      })
+      .done(function(data) {
+        var id = $('.message').data('message-id');
+        var insertHTML = '';
+          if(message.id > id){
+            insertHTML += buildHTML(message);
+          };
+        $('#message').append(insertHTML);
+        scroll()
+      })
+      .fail(function(data) {
+        alert('自動更新に失敗しました')
+      });
+    } , 5000 );
+
+
   });
 });
