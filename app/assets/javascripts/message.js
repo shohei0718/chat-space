@@ -41,6 +41,7 @@ $(document).on('turbolinks:load', function() {
         contentType: false,
       })
       .done(function(data){
+        console.log("成功")
         var html = buildHTML(data);
         $('#message').append(html);
         $('#new_message')[0].reset();
