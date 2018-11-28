@@ -6,7 +6,7 @@ $(document).on('turbolinks:load', function() {
           var html = `<div class="message" data-id="${message.id}">
                         <div class="upper-message">
                           <div class="upper-message__user-name">
-                            ${message.user_name}
+                          ${message.user_name}
                           </div>
                         </div>
 
@@ -41,7 +41,6 @@ $(document).on('turbolinks:load', function() {
         contentType: false,
       })
       .done(function(data){
-        console.log("成功")
         var html = buildHTML(data);
         $('#message').append(html);
         $('#new_message')[0].reset();
@@ -49,7 +48,7 @@ $(document).on('turbolinks:load', function() {
         scroll()
       })
       .fail(function(){
-        alert('error');
+        alert('メッセージを入力してください');
         $('.form__submit').prop('disabled', false);
       })
     });
